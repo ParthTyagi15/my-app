@@ -46,32 +46,48 @@ function App() {
 
 
   return (
-
-    <div className='page'>
-      <div className='container'>
-        <h1 className="heading">Image Detection App</h1>
-        <br></br>
-
-        <div className="img-holder">
-          <img src={selectedFile.filePreview} width="224" alt="" id="img" className='img' />
+    <div className="page">
+      <section id="title">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="">DETECT-I-MAGE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="https://parthtyagi15.github.io/CV-parth/">About me</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div class="row">
+            <div class="col-lg-12 desc">
+              <h1>Upload the image and get the predictions.</h1>
+            </div>
+          </div>
         </div>
-        <input name="img-up" id="upload_file" type="file" accept="image/*" onChange={
-          (event) => setSelectedFile({ file: event.target.files[0], filePreview: URL.createObjectURL(event.target.files[0]), })
-        } />
-        <div className='label'>
-          <label htmlFor="upload_file" className='image-upload'>
-            <i className='material-icons'>add_photo_alternate</i>
-            Upload your Image
-          </label>
+      </section>
+      <section class="main-body">
+        <div class="container-fluid">
+          <div className="img-holder">
+            <img src={selectedFile.filePreview} width="224" alt="" id="img" className='img' />
+            <input name="img-up" id="upload_file" type="file" accept="image/*" onChange={
+              (event) => setSelectedFile({ file: event.target.files[0], filePreview: URL.createObjectURL(event.target.files[0]), })
+            } />
+            <button class="w-100 btn btn-block btn-lg btn-outline-light upload-btn">
+              <label htmlFor="upload_file" className='image-upload'>
+                <i class="fa-solid fa-image icon"></i> Upload your Image
+              </label>
+            </button>
+            <button id="submit_file" type="submit" class="w-100 btn btn-block btn-lg btn-outline-light upload-btn" onClick={handleSubmit}>
+              <i class="fa-solid fa-upload icon"></i> Get Predictions
+            </button>
+          </div>
         </div>
-        <button id="submit_file" type="submit" className="btn btn-dark" onClick={handleSubmit}>Upload</button>
-        <div className='submit'>
-          <label htmlFor="submit_file" className='upload'>
-            <i className='material-icons'>file_upload</i>
-            Get Predictions
-          </label>
-
-        </div>
+      </section>
+      <section id="predictions">
         <div className='pred'>
           <b>
             {ptext.head}
@@ -81,9 +97,8 @@ function App() {
             {ptext.second}
           </b>
         </div>
-      </div>
+      </section>
     </div>
-
   )
 
 }
