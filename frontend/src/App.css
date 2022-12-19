@@ -1,0 +1,91 @@
+*{
+  margin: 0;
+  padding:0;
+}
+.page{
+  height:100vh;
+  background-color: skyblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container{
+  margin-bottom: 15%;
+  height : 300px;
+  width: 300px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.603);
+}
+.heading{
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+.img-holder{
+  width: 150px;
+  height: 150px;
+  border: 3px solid black;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin: auto;
+}
+.img{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+.container input{
+  display: none;
+}
+.container label{
+  width: 100%;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+.image-upload{
+  margin: 0%;
+  width: 200px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+.submit{
+  margin: 25%;
+  margin-bottom: 5%;
+  margin-top:5%;
+  width: 150px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+.container button{
+  display: none;
+}
+
+.upload{
+  margin: auto;
+  width: 200px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+.pred{
+  margin-top:10%;
+  margin-bottom: 5%;
+  text-align: center;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-size:larger;
+  background-color:rgba(255, 255, 255, 0.615);
+  border-radius: 10px;
+}
