@@ -51,21 +51,28 @@ h1 {
   display: none;
 }
 
-.upload-btn {
+
+.button-1 {
+  height:50px;
+  width: 300px;
   margin-top: 10px;
   cursor: pointer;
   text-align: center;
   font-family: 'Montserrat';
   font-size: 1rem;
+  background-color: transparent;
+  border: 3px solid #678983;
+  border-radius: 50px;
+  -webkit-transition: all .15s ease-in-out;
+  transition: all .15s ease-in-out;
   color: #E6DDC4;
 }
-
-.image-upload {
-  cursor: pointer;
-  text-align: center;
-  font-family: 'Montserrat';
-  font-size: 1rem;
+.button-1:hover {
+  box-shadow: 0 0 10px 0 #678983 inset, 0 0 20px 2px #678983;
+  border: 3px solid #E6DDC4;
+  color: #678983;
 }
+
 
 .pred {
   margin-left: 200px;

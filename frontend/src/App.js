@@ -1,7 +1,8 @@
 import './App.css'
 import React, { useState, useEffect } from 'react'
-
-
+import { isMobile } from 'react-device-detect';
+let temp;
+let ans;
 function App() {
 
   const [ptext, setPtext] = useState({
@@ -15,6 +16,7 @@ function App() {
   });
 
   const handleSubmit = (event) => {
+    temp = true;
     event.preventDefault();
     const formData = new FormData();
     console.log(selectedFile.file);
@@ -26,25 +28,24 @@ function App() {
     })
       .then((response) => response.json())
       .then((x) => {
-
+        temp = null;
+        ans = true;
         console.log(x[0]);
         console.log(x[1]);
         setPtext(
           {
             head: "Predictions :",
-            first: "1. " + x[0]["image_prediction"] + " = " + x[0]["image_prediction_confidence"],
-            second: "2. " + x[1]["image_prediction"] + " = " + x[1]["image_prediction_confidence"],
+            first: x[0]["image_prediction"] + " = " + x[0]["image_prediction_confidence"],
+            second: x[1]["image_prediction"] + " = " + x[1]["image_prediction_confidence"],
           }
         )
+
       })
       .catch((error) => {
         console.log(error);
         console.log("API Call Failed");
       });
   }
-
-
-
   return (
     <div className="page">
       <section id="title">
@@ -76,30 +77,43 @@ function App() {
             <input name="img-up" id="upload_file" type="file" accept="image/*" onChange={
               (event) => setSelectedFile({ file: event.target.files[0], filePreview: URL.createObjectURL(event.target.files[0]), })
             } />
-            <button class="w-100 btn btn-block btn-lg btn-outline-light upload-btn">
+            {isMobile &&
+              <button class="button button-1">
+                <label htmlFor="upload_file" className='image-upload'>
+                  <i class="fa-solid fa-camera"></i> Capture Image
+                </label>
+              </button>
+            }
+            <button class="button button-1">
               <label htmlFor="upload_file" className='image-upload'>
-                <i class="fa-solid fa-image icon"></i> Upload your Image
+                <i class="fa-solid fa-image"></i> Upload your Image
               </label>
             </button>
-            <button id="submit_file" type="submit" class="w-100 btn btn-block btn-lg btn-outline-light upload-btn" onClick={handleSubmit}>
+            <button id="submit_file" type="submit" class="button button-1" onClick={handleSubmit}>
               <i class="fa-solid fa-upload icon"></i> Get Predictions
             </button>
+            {/* <button id="submit_file" type="submit" class="w-100 btn btn-block btn-lg btn-outline-light upload-btn" onClick={handleSubmit}>
+              <i class="fa-solid fa-upload icon"></i> Get Predictions
+            </button> */}
           </div>
         </div>
       </section>
       <section id="predictions">
         <div className='pred'>
-          <b>
-            {ptext.head}
-            <br />
-            {ptext.first}
-            <br />
-            {ptext.second}
-          </b>
+          {temp &&
+            <p>Loading...</p>
+          }
+          {ans &&
+            <b>
+              {ptext.head}
+              <li>{ptext.first}</li>
+              <li>{ptext.second}</li>
+            </b>
+          }
         </div>
       </section>
     </div>
-  )
 
+  )
 }
 export default App
